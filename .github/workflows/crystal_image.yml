@@ -23,6 +23,6 @@ jobs:
         with:
          context: ./crystal_grpc_bench
          file: ./crystal_grpc_bench/Dockerfile
-         platforms: linux/arm64
+         platforms: linux/arm64,linux/amd64
          push: true
          tags: priyaa221/crystal_grpc_bench:latest_arm
