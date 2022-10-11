@@ -11,12 +11,18 @@ jobs:
       - name: Set up QEMU
         id: qemu
         uses: docker/setup-qemu-action@v1
-      - name: Install and Run tests
-        run: |
-           docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
-             arm64v8/ubuntu:20.04\
-              bash -exc 'apt-get update && \
-              echo "$Anuj221$" | docker login -u "priyaa221" --password-stdin && \
-              docker buildx build --platform linux/arm64,linux/arm64 -t priyaa221/crystal_grpc_bench:latest --push . && \
-              docker push priyaa221/crystal_grpc_bench:latest && \
-              deactivate'
+      - name: Setup buildx
+        uses: docker/setup-Buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: priyaa221
+          password: $Anuj221$
+      - name: Build and Publish API
+        uses: docker/build-push-action@v2
+        with:
+         context: ./grpc_bench/crystal_grpc_bench
+         file: ./grpc_bench/crystal_grpc_bench/Dockerfile
+         platforms: linux/arm64
+         push: true
+         tags: priyaa221/crystal_grpc_bench:latest_arm
