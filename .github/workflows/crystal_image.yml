@@ -21,8 +21,8 @@ jobs:
       - name: Build and Publish API
         uses: docker/build-push-action@v2
         with:
-         context: ./grpc_bench/crystal_grpc_bench
-         file: ./grpc_bench/crystal_grpc_bench/Dockerfile
+         context: ./crystal_grpc_bench
+         file: ./crystal_grpc_bench/Dockerfile
          platforms: linux/arm64
          push: true
          tags: priyaa221/crystal_grpc_bench:latest_arm
