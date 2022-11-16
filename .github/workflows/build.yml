@@ -1426,4 +1426,3 @@ jobs:
       run: docker push $GRPC_IMAGE_NAME:swift_grpc_bench-complex_proto
       env:
         GRPC_IMAGE_NAME: ${{ needs.set-image-name.outputs.name }}
-
