@@ -12,6 +12,7 @@ jobs:
           command: |
              uname -m 
              sudo apt-get update
+             DOCKER_BUILDKIT=1 docker build -t obvionaoe/ghz:v0.103.0 .
              ./setup_scenario.sh complex_proto
              ./build.sh d_grpc_bench
              ./bench.sh d_grpc_bench
