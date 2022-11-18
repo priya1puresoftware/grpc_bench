@@ -6,5 +6,5 @@
 	"dependencies": {
 		"grpc" :{"path": "grpc-dlang"}
 	},
-	"dflags-ldc": ["-flto=/usr/lib/llvm-10/lib/LLVMgold.so"]
+	"dflags-ldc": ["-flto-binary=/usr/lib/llvm-10/lib/LLVMgold.so"]
 }
