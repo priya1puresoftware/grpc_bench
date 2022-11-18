@@ -1439,7 +1439,7 @@ jobs:
         uses: docker/setup-qemu-action@v1
       - name: Install and Run tests
         run: |
-           docker run -it -v -v /var/run/docker.sock:/var/run/docker.sock arm64v8/ubuntu:20.04 /bin/bash \
+           docker run -it -v /var/run/docker.sock:/var/run/docker.sock arm64v8/ubuntu:20.04 /bin/bash \
            docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \ 
              arm64v8/ubuntu:20.04\
               bash -exc 'apt-get update && apt-get -y install git && apt-get install -y language-pack-en && export LC_CTYPE=en_US.UTF-8 && apt-get -y install locales && \
