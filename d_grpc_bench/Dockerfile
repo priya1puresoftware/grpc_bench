@@ -1,6 +1,6 @@
 FROM priyaa221/dlang2_ldc-ubuntu:latest AS builder
 
-RUN apt update && apt install -y protobuf-compiler git cmake g++
+RUN apt update && apt install -y wget protobuf-compiler git cmake g++
 
 WORKDIR /app
 RUN git clone --depth 1 --branch master --recurse-submodules https://github.com/huntlabs/grpc-dlang
