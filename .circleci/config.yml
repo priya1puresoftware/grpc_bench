@@ -17,6 +17,5 @@ jobs:
              ./bench.sh d_grpc_bench
 workflows:
   version: 2
-  python3.8:
     jobs:
       - build-medium-arm64
