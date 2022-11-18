@@ -1,10 +1,14 @@
-FROM dlang2/ldc-ubuntu:1.26.0 AS builder
+FROM priyaa221/dlang2_ldc-ubuntu:latest AS builder
 
 RUN apt update && apt install -y protobuf-compiler git cmake g++
 
 WORKDIR /app
 RUN git clone --depth 1 --branch master --recurse-submodules https://github.com/huntlabs/grpc-dlang
 WORKDIR /app/grpc-dlang
+RUN wget http://ports.ubuntu.com/pool/universe/d/dub/dub_1.19.0-1build2_arm64.deb
+RUN ar -x dub_1.19.0-1build2_arm64.deb
+RUN apt-get update
+RUN apt-get install -y dub
 # Building the protocol buffer compiler for D
 RUN dub build protobuf:protoc-gen-d
 # Building the gRPC plugin for D
